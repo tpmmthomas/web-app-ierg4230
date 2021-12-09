@@ -4,10 +4,7 @@ from telebot.credentials import bot_token, URL
 from telebot.mastermind import get_response
 from database import setup_db,Movie,db_drop_and_create_all
 from flask_cors import CORS
-from flask_script import Manager
-from flask_migrate import Migrate, MigrateCommand
 from database import db
-from manager import runmigrate
 
 
 global bot
@@ -59,5 +56,4 @@ if __name__ == "__main__":
     setup_db(app)
     CORS(app)
     db_drop_and_create_all()
-    runmigrate(app)
     app.run(threaded=True)
