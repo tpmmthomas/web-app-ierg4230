@@ -7,6 +7,7 @@ from flask_cors import CORS
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from database import db
+from manager import runmigrate
 
 
 global bot
@@ -58,8 +59,5 @@ if __name__ == "__main__":
     setup_db(app)
     CORS(app)
     db_drop_and_create_all()
-    migrate = Migrate(app, db)
-    manager = Manager(app)
-    manager.add_command('db', MigrateCommand)
-    manager.run()
+    runmigrate()
     app.run(threaded=True)
