@@ -52,8 +52,7 @@ def get_movies():
 def index():
     return jsonify({'message': 'Hello,hello, World!'})
 
-if __name__ == "__main__":
-    setup_db(app)
-    CORS(app)
-    db_drop_and_create_all()
-    app.run(threaded=True)
+setup_db(app)
+CORS(app)
+db_drop_and_create_all()
+app.run(threaded=True)
